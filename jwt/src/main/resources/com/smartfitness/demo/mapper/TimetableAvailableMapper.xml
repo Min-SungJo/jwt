@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.smartfitness.demo.mapper.TimetableAvailableMapper">
+	
+	<select id="selectTimetable" resultType="com.smartfitness.demo.model.TimetableAvailable">
+		select * from timetable_available where em_seq=#{em_seq} and ra_switch="O";
+	</select>
+	<update id="reservTimetable" parameterType="com.smartfitness.demo.model.TimetableAvailable">
+		update timetable_available
+		set #{time} = "N"
+		where #{time} = "Y"
+		and em_seq=#{em_seq}
+	</update>
+</mapper>

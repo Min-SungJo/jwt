@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartfitness.demo.mapper.CalenderMapper">
+
+	<insert id="calenderAdd" parameterType="com.smartfitness.demo.model.Calender">
+		insert into Calender values(null,#{start_time},#{end_time},#{program_name},#{mem_id},#{trainer_name})
+	</insert>
+	
+	<update id="calenderC" parameterType="com.smartfitness.demo.model.Calender">
+		update members 
+		pt_cnt=pt_cnt-1
+		where mem_id = #{mem_id}
+	</update>
+	
+</mapper>

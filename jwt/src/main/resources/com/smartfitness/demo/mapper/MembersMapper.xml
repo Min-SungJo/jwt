@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartfitness.demo.mapper.MembersMapper">
+	<insert id="join" parameterType="com.smartfitness.demo.model.Members">
+		insert into members
+		values(#{mem_id},#{mem_pw},#{mem_grade},now(),#{mem_name},#{mem_addr},#{mem_birthdate},#{mem_phone},#{mem_type},#{ctr_seq})
+	</insert>
+	
+	<select id="login" parameterType="com.smartfitness.demo.model.Members" resultType="com.smartfitness.demo.model.Members">
+	select * from members where mem_id=#{mem_id} and mem_pw=#{mem_pw}
+	</select>
+	
+	<select id="findByUserId" resultType="com.smartfitness.demo.model.MembersDetail">
+		select mem_id,mem_pw
+		from members
+		where mem_id = #{userId} 
+	</select>
+</mapper>

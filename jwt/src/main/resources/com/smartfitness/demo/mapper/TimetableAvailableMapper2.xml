@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.smartfitness.demo.mapper.TimetableAvailableMapper2">
+	
+	<select id="selectTimetable" resultType="com.smartfitness.demo.model.TimetableAvailable2">
+		select * from programtimetable_available where pr_seq=#{pr_seq} and ra_switch="O";
+	</select>
+	<update id="reservTimetable">
+		update timetable_available2
+		set #{reserv} = "N"
+		where #{reserv} = "Y"
+		and pg_seq=#{pg_seq}
+		and pg_max>pg_curr_cnt
+		
+		update programs
+		set pg_cur_cnt=pg_cur_cnt+1
+	</update>
+	
+	<update id="cancelTimetable">
+		update timetable_available2
+		set #{cancel} = "Y", pg_curr_cnt
+		where #{cancel} = "N"
+		and ra_seq=#{pgr_seq}
+	</update>
+</mapper>
