@@ -64,6 +64,7 @@ public class JwtTokenProvider {
 		String token = null;
 		Cookie cookie = WebUtils.getCookie(request, "X-Auth-TOKEN");
 		if(cookie != null) token = cookie.getValue();
+                cookie.setHttpOnly(true);
 		return token;
 	}
 	
